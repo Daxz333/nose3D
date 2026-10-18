@@ -1,0 +1,49 @@
+# ============================================================
+# AIHB / AI 换鼻项目依赖
+# 目标环境：Windows + NVIDIA GPU (RTX 40 系列) + Python 3.10
+# 安装：pip install -r requirements.txt
+# ============================================================
+
+# ---------- PyTorch (GPU, CUDA 11.8) ----------
+# CUDA 11.8 支持 Ada 架构 (RTX 4060 Ti / sm_89)
+# 需要额外 index 安装：
+#   pip install --extra-index-url https://download.pytorch.org/whl/cu118 -r requirements.txt
+torch==2.0.1+cu118
+torchvision==0.15.2+cu118
+
+# ---------- TensorFlow (CPU) ----------
+# 项目中的仿射对齐 (aligner.py / warper.py) 属轻量计算，CPU 即可；
+# Windows 上 TensorFlow 2.x 不再原生支持 GPU
+tensorflow==2.13.1
+
+# ---------- ONNX 推理 ----------
+# FaceDetector (RetinaFace) 与 FaceSegmentation (RVM)
+onnx==1.14.1
+onnxruntime-gpu==1.16.3
+
+# ---------- 人脸增强 / 超分生态 ----------
+# 本项目自带 gfpgan 源码 (aihb3/ai/super_resolution/gfpgan)，
+# 但依赖 basicsr / realesrgan / facexlib
+basicsr==1.4.2
+realesrgan==0.3.0
+facexlib==0.3.0
+
+# ---------- 图像 / 数值计算 ----------
+opencv-python==4.8.1.78
+numpy==1.24.3
+pillow==10.2.0
+matplotlib==3.7.2
+scipy==1.10.1
+pyamg==4.2.3
+
+# ---------- Web 服务 ----------
+flask==2.3.3
+flask-cors==4.0.0
+flask-login==0.6.3
+werkzeug==2.3.7
+requests==2.31.0
+qiniu==7.13.1
+
+# ---------- 工具 ----------
+termcolor==2.3.0
+tqdm==4.66.1

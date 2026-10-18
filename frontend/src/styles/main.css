@@ -1,0 +1,458 @@
+/* ============================================================
+   AIHB 设计系统 —— 科技风 / 青色霓虹
+   工作台、接口列表和帮助页面共用
+   ============================================================ */
+
+:root {
+  --bg: #05070d;
+  --bg-2: #080e18;
+  --cyan: #00f0ff;
+  --blue: #2b7fff;
+  --panel: rgba(10, 18, 30, 0.82);
+  --panel-2: rgba(8, 14, 24, 0.9);
+  --panel-solid: #0a1220;
+  --line: rgba(0, 240, 255, 0.28);
+  --line-soft: rgba(0, 240, 255, 0.12);
+  --text: #cfe9f5;
+  --text-strong: #eafcff;
+  --muted: #5f7c92;
+  --danger: #ff4d6d;
+  --ok: #28e0a8;
+  --warn: #ffb547;
+  --radius: 10px;
+  --font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --sidebar-w: 208px;
+  --topbar-h: 60px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: 'Segoe UI', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background:
+    radial-gradient(1000px 520px at 85% -10%, rgba(0, 240, 255, 0.1), transparent 60%),
+    radial-gradient(900px 500px at 5% 110%, rgba(43, 127, 255, 0.1), transparent 60%),
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px) 0 0 / 42px 42px,
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px) 0 0 / 42px 42px,
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 顶部扫描光带 */
+body::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.4;
+  animation: scan 7s linear infinite;
+  pointer-events: none;
+  z-index: 99;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- 排版 ---------------- */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-strong);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
+}
+
+h2 {
+  font-size: 17px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-ok {
+  color: var(--ok);
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  margin-right: 8px;
+  animation: pulse 1.6s infinite;
+}
+
+/* ---------------- 分隔线 ---------------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 20px 0 16px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+.divider-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+/* ---------------- 面板 ---------------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 22px;
+  position: relative;
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.04) inset,
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.panel.corner::before,
+.panel.corner::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cyan);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.panel.corner::before {
+  left: -1px;
+  top: -1px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: var(--radius) 0 0 0;
+}
+
+.panel.corner::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+/* ---------------- 按钮 ---------------- */
+.btn {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #02121a;
+  height: 46px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+  transition: 0.25s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 34px rgba(0, 240, 255, 0.6);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.btn.ghost:hover:not(:disabled) {
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.22);
+  transform: none;
+}
+
+.btn.subtle {
+  background: rgba(0, 240, 255, 0.06);
+  color: var(--text);
+  border: 1px solid var(--line-soft);
+  box-shadow: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  height: 38px;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+.btn.subtle:hover:not(:disabled) {
+  color: var(--cyan);
+  border-color: var(--line);
+  background: rgba(0, 240, 255, 0.1);
+  transform: none;
+}
+
+.btn.danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+  box-shadow: none;
+}
+
+.btn.danger:hover:not(:disabled) {
+  background: rgba(255, 77, 109, 0.12);
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.22);
+  transform: none;
+}
+
+.btn.sm {
+  height: 34px;
+  padding: 0 14px;
+  font-size: 12.5px;
+  letter-spacing: 1px;
+}
+
+.btn.block {
+  width: 100%;
+}
+
+/* ---------------- 表单 ---------------- */
+.field {
+  margin-bottom: 16px;
+}
+
+.field > label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  background: rgba(5, 10, 18, 0.9);
+  border: 1px solid var(--line-soft);
+  outline: none;
+  transition: 0.2s;
+}
+
+.input::placeholder {
+  color: #40566a;
+}
+
+.input:focus {
+  border-color: var(--cyan);
+  box-shadow:
+    0 0 0 3px rgba(0, 240, 255, 0.12),
+    0 0 18px rgba(0, 240, 255, 0.25);
+}
+
+/* ---------------- 标签 / 徽章 ---------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--cyan);
+  background: rgba(5, 10, 18, 0.85);
+}
+
+.tag.warn {
+  color: var(--warn);
+  border-color: rgba(255, 181, 71, 0.35);
+}
+
+.tag.ok {
+  color: var(--ok);
+  border-color: rgba(40, 224, 168, 0.35);
+}
+
+.tag.danger {
+  color: var(--danger);
+  border-color: rgba(255, 77, 109, 0.35);
+}
+
+/* ---------------- 滚动条 ---------------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 10, 18, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.22);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.4);
+  background-clip: padding-box;
+}
+
+/* ---------------- 通用工具类 ---------------- */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.row.wrap {
+  flex-wrap: wrap;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fade-up {
+  animation: fadeUp 0.35s ease both;
+}
+
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

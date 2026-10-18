@@ -1,0 +1,442 @@
+{
+  "nose": {
+    "region": "nose",
+    "label": "鼻子",
+    "targetInput": "input-44.jpg",
+    "sourceInput": "input-90_003.jpg",
+    "views": {
+      "target": {
+        "image": "nose-target.jpg",
+        "detail": "nose-target-detail.jpg",
+        "box": [
+          193,
+          187,
+          319,
+          355
+        ]
+      },
+      "source": {
+        "image": "nose-source.jpg",
+        "detail": "nose-source-detail.jpg",
+        "box": [
+          77,
+          182,
+          171,
+          365
+        ]
+      },
+      "result": {
+        "image": "nose-result.jpg",
+        "detail": "nose-result-detail.jpg",
+        "box": [
+          193,
+          187,
+          319,
+          355
+        ]
+      }
+    },
+    "changedPixels": 9569,
+    "enhanced": true
+  },
+  "eye": {
+    "region": "eye",
+    "label": "眼睛",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-761.jpg",
+    "views": {
+      "target": {
+        "image": "eye-target.jpg",
+        "detail": "eye-target-detail.jpg",
+        "box": [
+          148,
+          204,
+          388,
+          249
+        ]
+      },
+      "source": {
+        "image": "eye-source.jpg",
+        "detail": "eye-source-detail.jpg",
+        "box": [
+          112,
+          181,
+          378,
+          231
+        ]
+      },
+      "result": {
+        "image": "eye-result.jpg",
+        "detail": "eye-result-detail.jpg",
+        "box": [
+          148,
+          204,
+          388,
+          249
+        ]
+      }
+    },
+    "changedPixels": 226756,
+    "enhanced": true
+  },
+  "l_eye": {
+    "region": "l_eye",
+    "label": "左眼",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-761.jpg",
+    "views": {
+      "target": {
+        "image": "l_eye-target.jpg",
+        "detail": "l_eye-target-detail.jpg",
+        "box": [
+          316,
+          204,
+          388,
+          243
+        ]
+      },
+      "source": {
+        "image": "l_eye-source.jpg",
+        "detail": "l_eye-source-detail.jpg",
+        "box": [
+          290,
+          181,
+          378,
+          227
+        ]
+      },
+      "result": {
+        "image": "l_eye-result.jpg",
+        "detail": "l_eye-result-detail.jpg",
+        "box": [
+          316,
+          204,
+          388,
+          243
+        ]
+      }
+    },
+    "changedPixels": 225778,
+    "enhanced": true
+  },
+  "r_eye": {
+    "region": "r_eye",
+    "label": "右眼",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-761.jpg",
+    "views": {
+      "target": {
+        "image": "r_eye-target.jpg",
+        "detail": "r_eye-target-detail.jpg",
+        "box": [
+          148,
+          211,
+          223,
+          249
+        ]
+      },
+      "source": {
+        "image": "r_eye-source.jpg",
+        "detail": "r_eye-source-detail.jpg",
+        "box": [
+          112,
+          184,
+          201,
+          231
+        ]
+      },
+      "result": {
+        "image": "r_eye-result.jpg",
+        "detail": "r_eye-result-detail.jpg",
+        "box": [
+          148,
+          211,
+          223,
+          249
+        ]
+      }
+    },
+    "changedPixels": 225204,
+    "enhanced": true
+  },
+  "brow": {
+    "region": "brow",
+    "label": "眉毛",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "brow-target.jpg",
+        "detail": "brow-target-detail.jpg",
+        "box": [
+          109,
+          151,
+          421,
+          210
+        ]
+      },
+      "source": {
+        "image": "brow-source.jpg",
+        "detail": "brow-source-detail.jpg",
+        "box": [
+          108,
+          118,
+          419,
+          182
+        ]
+      },
+      "result": {
+        "image": "brow-result.jpg",
+        "detail": "brow-result-detail.jpg",
+        "box": [
+          109,
+          151,
+          421,
+          210
+        ]
+      }
+    },
+    "changedPixels": 5577,
+    "enhanced": true
+  },
+  "l_brow": {
+    "region": "l_brow",
+    "label": "左眉",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "l_brow-target.jpg",
+        "detail": "l_brow-target-detail.jpg",
+        "box": [
+          308,
+          151,
+          421,
+          200
+        ]
+      },
+      "source": {
+        "image": "l_brow-source.jpg",
+        "detail": "l_brow-source-detail.jpg",
+        "box": [
+          305,
+          132,
+          419,
+          182
+        ]
+      },
+      "result": {
+        "image": "l_brow-result.jpg",
+        "detail": "l_brow-result-detail.jpg",
+        "box": [
+          308,
+          151,
+          421,
+          200
+        ]
+      }
+    },
+    "changedPixels": 2459,
+    "enhanced": true
+  },
+  "r_brow": {
+    "region": "r_brow",
+    "label": "右眉",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "r_brow-target.jpg",
+        "detail": "r_brow-target-detail.jpg",
+        "box": [
+          109,
+          160,
+          240,
+          210
+        ]
+      },
+      "source": {
+        "image": "r_brow-source.jpg",
+        "detail": "r_brow-source-detail.jpg",
+        "box": [
+          108,
+          118,
+          240,
+          169
+        ]
+      },
+      "result": {
+        "image": "r_brow-result.jpg",
+        "detail": "r_brow-result-detail.jpg",
+        "box": [
+          109,
+          160,
+          240,
+          210
+        ]
+      }
+    },
+    "changedPixels": 3115,
+    "enhanced": true
+  },
+  "lip": {
+    "region": "lip",
+    "label": "嘴唇",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "lip-target.jpg",
+        "detail": "lip-target-detail.jpg",
+        "box": [
+          185,
+          382,
+          353,
+          439
+        ]
+      },
+      "source": {
+        "image": "lip-source.jpg",
+        "detail": "lip-source-detail.jpg",
+        "box": [
+          177,
+          379,
+          323,
+          443
+        ]
+      },
+      "result": {
+        "image": "lip-result.jpg",
+        "detail": "lip-result-detail.jpg",
+        "box": [
+          185,
+          382,
+          353,
+          439
+        ]
+      }
+    },
+    "changedPixels": 3996,
+    "enhanced": true
+  },
+  "u_lip": {
+    "region": "u_lip",
+    "label": "上唇",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "u_lip-target.jpg",
+        "detail": "u_lip-target-detail.jpg",
+        "box": [
+          185,
+          382,
+          350,
+          415
+        ]
+      },
+      "source": {
+        "image": "u_lip-source.jpg",
+        "detail": "u_lip-source-detail.jpg",
+        "box": [
+          179,
+          379,
+          320,
+          416
+        ]
+      },
+      "result": {
+        "image": "u_lip-result.jpg",
+        "detail": "u_lip-result-detail.jpg",
+        "box": [
+          185,
+          382,
+          350,
+          415
+        ]
+      }
+    },
+    "changedPixels": 1166,
+    "enhanced": true
+  },
+  "l_lip": {
+    "region": "l_lip",
+    "label": "下唇",
+    "targetInput": "input-55.jpg",
+    "sourceInput": "input-44.jpg",
+    "views": {
+      "target": {
+        "image": "l_lip-target.jpg",
+        "detail": "l_lip-target-detail.jpg",
+        "box": [
+          190,
+          387,
+          353,
+          439
+        ]
+      },
+      "source": {
+        "image": "l_lip-source.jpg",
+        "detail": "l_lip-source-detail.jpg",
+        "box": [
+          177,
+          389,
+          323,
+          443
+        ]
+      },
+      "result": {
+        "image": "l_lip-result.jpg",
+        "detail": "l_lip-result-detail.jpg",
+        "box": [
+          190,
+          387,
+          353,
+          439
+        ]
+      }
+    },
+    "changedPixels": 2838,
+    "enhanced": true
+  },
+  "mouth": {
+    "region": "mouth",
+    "label": "口腔",
+    "targetInput": "input-dzq.jpg",
+    "sourceInput": "input-jst.jpg",
+    "views": {
+      "target": {
+        "image": "mouth-target.jpg",
+        "detail": "mouth-target-detail.jpg",
+        "box": [
+          161,
+          387,
+          259,
+          417
+        ]
+      },
+      "source": {
+        "image": "mouth-source.jpg",
+        "detail": "mouth-source-detail.jpg",
+        "box": [
+          205,
+          392,
+          325,
+          425
+        ]
+      },
+      "result": {
+        "image": "mouth-result.jpg",
+        "detail": "mouth-result-detail.jpg",
+        "box": [
+          161,
+          387,
+          259,
+          417
+        ]
+      }
+    },
+    "changedPixels": 432,
+    "enhanced": true
+  }
+}

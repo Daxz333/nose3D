@@ -1,0 +1,11 @@
+{
+  "model_version": "1.2",
+  "upscale": 2,
+  "bg_upsampler": "realesrgan",
+  "bg_tile":400,
+  "arch": "clean",
+  "channel_multiplier": 2,
+  "model_path": "pretrained_model/GFPGANCleanv1-NoCE-C2.pth",
+  "only_center_face":false,
+  "aligned": false
+}
