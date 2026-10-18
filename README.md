@@ -58,7 +58,7 @@ flowchart LR
 | NVIDIA GPU | CUDA 11.8 兼容 | 推荐；模型推理依赖 GPU 运行时 |
 | Git / 网络 | 最新稳定版 | 首次安装依赖及按需下载缓存 |
 
-主模型权重与人脸示例素材不包含在公开仓库中。部署时需自行准备 `pretrained_model/` 下的模型；完整清单、缓存迁移和离线部署说明请参阅 [DEPLOY_CODEBUDDY.md](DEPLOY_CODEBUDDY.md)。
+项目根目录的 `pretrained_model/` 应包含主模型权重。完整清单、缓存迁移和离线部署说明请参阅 [DEPLOY_CODEBUDDY.md](DEPLOY_CODEBUDDY.md)。
 
 ### 1. 配置 Python 环境
 
@@ -104,6 +104,33 @@ Set-Location ..
 ```
 
 然后访问 `http://127.0.0.1:6006/app/`。构建产物由 Flask 托管，前端与 API 同源。
+
+## 克隆后还需准备
+
+GitHub 仓库只包含源码和文档，不包含模型权重、个人照片或生成结果。安装 Python / npm 依赖并不能替代这些模型文件；缺少主权重时，后端无法完成真实推理。
+
+### 2D 部位替换
+
+请自行准备下列主模型，并放入项目根目录的 `pretrained_model/`（合计约 457 MB）：
+
+| 文件 | 大小约 | 用途 |
+| --- | ---: | --- |
+| `FaceDetector.onnx` | 1.8 MB | 人脸检测 |
+| `fp_512.pth` | 53.3 MB | BiSeNet 人脸解析与部位分割 |
+| `rvm_resnet50_fp16.onnx` | 53.8 MB | 人脸/背景分割 |
+| `GFPGANCleanv1-NoCE-C2.pth` | 348.6 MB | GFPGAN 人脸增强 |
+
+`FaceLandmark.onnx` 和 `rvm_mobilenetv3_fp16.onnx` 是备用模型，当前主流程不直接使用。模型的来源、文件校验和部署缓存迁移说明见 [DEPLOY_CODEBUDDY.md](DEPLOY_CODEBUDDY.md)；请同时遵守各模型与数据资产的许可条款。
+
+首次运行时，依赖还可能需要获取 ResNet18、facexlib parsing/detection 和 RealESRGAN 缓存。联网时库会按需下载；离线部署需另外预置这些缓存，路径和检查命令见部署文档。环境按 Windows 10/11、Python 3.10、兼容 CUDA 11.8 的 NVIDIA GPU 配置；前端开发或构建另需 Node.js 18+。2D 主流程不需要 WSL。
+
+仓库不含人脸示例图片，前端接口示例画廊可能没有图片预览；这不影响上传两张自己的图片进行替换。若要重新生成画廊示例，需先准备 `images/` 中脚本要求的样例图片和全部推理模型，再运行 `tests/generate_api_examples.py`。
+
+### 可选 3D 头模
+
+除主项目依赖外，还需要 Ubuntu 22.04 WSL、NVIDIA GPU 和网络。运行 `setup_dense_head.ps1` 会下载 HRN 推理代码、权重及头模资产，并建立独立运行环境；详细步骤见 [head_reconstruction/DENSE_HEAD.md](head_reconstruction/DENSE_HEAD.md)。
+
+七牛上传和喵提醒默认关闭。若需要启用，后端副本使用 `QINIU_ACCESS_KEY`、`QINIU_SECRET_KEY`、`QINIU_BUCKET_NAME`、`QINIU_CDN_DOMAIN` 和 `MIAOTIXING_ID` 环境变量；`FLASK_SECRET_KEY` 可用于设置稳定的会话密钥。仅本地推理时无需这些服务配置。
 
 ## 接口使用
 
@@ -241,6 +268,7 @@ AIHB2/
 
 - [部署与换机验收](DEPLOY_CODEBUDDY.md)：模型缓存、环境重建、GPU 检查和本地部署验收。
 - [稠密头模与打印说明](head_reconstruction/DENSE_HEAD.md)：HRN 环境、导出格式、拓扑检查和已知限制。
+- [算法实验笔记](readme.ipynb)：原始换鼻算法推导与实验过程。
 - [后续改进规划](后续改进.md)：从换鼻扩展到更多面部区域的设计记录。
 
 ## 贡献
